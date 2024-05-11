@@ -1,1 +1,1 @@
-Building simple rest-api in Symfony
+### Building simple full-stack app in Symfony
