@@ -11,3 +11,20 @@ h1 {
   flex-direction: column;
   
 }
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  
+}
+
+button {
+  margin-top: 10px;
+  background-color: yellow;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}

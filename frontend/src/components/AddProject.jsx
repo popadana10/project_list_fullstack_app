@@ -20,7 +20,7 @@ const AddProject = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <h1 className='myStyle'>Add Project</h1>
+            <h1>Add Project</h1>
             <input
                 type="text"
                 value={name}
