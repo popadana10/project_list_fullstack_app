@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const ProjectList = () => {
     const [projects, setProjects] = useState([]);
@@ -23,8 +24,27 @@ const ProjectList = () => {
         console.log('Edit project with id:', projectId);
     };
 
+
+
     const handleDelete = (projectId) => {
-        if (window.confirm('Are you sure you want to delete this project?')) {
+        if (Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        }));
+        {
             axios.delete(`http://localhost:8007/api/projects/ ${projectId}`)
                 .then(() => {
                     setProjects(projects.filter((project) => project.id !== projectId));
