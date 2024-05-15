@@ -24,7 +24,16 @@ const ProjectList = () => {
     };
 
     const handleDelete = (projectId) => {
-        // Logic to handle delete
+        if (window.confirm('Are you sure you want to delete this project?')) {
+            axios.delete(`http://localhost:8007/api/projects/ ${projectId}`)
+                .then(() => {
+                    setProjects(projects.filter((project) => project.id !== projectId));
+                })
+                .catch((error) => {
+                    console.log('Error:', error);
+                });
+        }
+
         console.log('Delete project with id:', projectId);
     };
 
